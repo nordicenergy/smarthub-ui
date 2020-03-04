@@ -1,5 +1,5 @@
-// Copyright 2018 Energy Web Foundation
-// This file is part of the snarthub Application brought to you by the Energy Web Foundation,
+// Copyright 2018 Nordic Energy
+// This file is part of the snarthub Application brought to you by the Nordic Energy,
 // a global non-profit organization focused on accelerating blockchain technology across the energy sector,
 // incorporated in Zug, Switzerland.
 //

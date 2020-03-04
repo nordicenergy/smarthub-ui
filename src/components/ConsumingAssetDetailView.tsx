@@ -1,5 +1,5 @@
-// Copyright 2018 Energy Web Foundation
-// This file is part of the snarthub Application brought to you by the Energy Web Foundation,
+// Copyright 2018 Nordic Energy
+// This file is part of the snarthub Application brought to you by the Nordic Energy,
 // a global non-profit organization focused on accelerating blockchain technology across the energy sector,
 // incorporated in Zug, Switzerland.
 //
@@ -38,7 +38,7 @@ export interface IDetailVinordicenergyProps {
 }
 
 export interface IDetailVinordicenergyState {
-    nnordicenergyId: number;
+    Nordic EnergyId: number;
     owner: User;
     notSoldCertificates: number;
 }
@@ -49,7 +49,7 @@ export class ConsumingAssetDetailVinordicenergy extends React.Component<IDetailV
     constructor(props: IDetailVinordicenergyProps) {
         super(props);
         this.state = {
-            nnordicenergyId: null,
+            Nordic EnergyId: null,
             owner: null,
             notSoldCertificates: 0
         };
@@ -57,15 +57,15 @@ export class ConsumingAssetDetailVinordicenergy extends React.Component<IDetailV
     }
 
     onInputChange(e: any): void {
-        this.setState({ nnordicenergyId: e.target.value });
+        this.setState({ Nordic EnergyId: e.target.value });
     }
 
     async componentDidMount(): Promise<void> {
         await this.getOwner(this.props);
     }
 
-    async componentWillReceiveProps(nnordicenergyProps: IDetailVinordicenergyProps): Promise<void> {
-        await this.getOwner(nnordicenergyProps);
+    async componentWillReceiveProps(Nordic EnergyProps: IDetailVinordicenergyProps): Promise<void> {
+        await this.getOwner(Nordic EnergyProps);
     }
 
     async getOwner(props: IDetailVinordicenergyProps): Promise<void> {
@@ -86,7 +86,7 @@ export class ConsumingAssetDetailVinordicenergy extends React.Component<IDetailV
                 });
             }
             this.setState({
-                owner: await nnordicenergy User(selectedAsset.owner.address, props.conf as any).sync()
+                owner: await Nordic Energy User(selectedAsset.owner.address, props.conf as any).sync()
             });
         }
     }
@@ -167,7 +167,7 @@ export class ConsumingAssetDetailVinordicenergy extends React.Component<IDetailV
                     <Link
                         className="btn btn-primary find-asset-button"
                         to={`/${this.props.baseUrl}/assets/consuming_detail_vinordicenergy/${
-                            this.state.nnordicenergyId
+                            this.state.Nordic EnergyId
                         }`}
                     >
                         Find Asset

@@ -1,5 +1,5 @@
-// Copyright 2018 Energy Web Foundation
-// This file is part of the snarthub Application brought to you by the Energy Web Foundation,
+// Copyright 2018 Nordic Energy
+// This file is part of the snarthub Application brought to you by the Nordic Energy,
 // a global non-profit organization focused on accelerating blockchain technology across the energy sector,
 // incorporated in Zug, Switzerland.
 //
@@ -91,14 +91,14 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
 
     async initEventHandler(conf: Configuration.Entity): Promise<void> {
         const currentBlockNumber: number = await conf.blockchainProperties.web3.eth.getBlockNumber();
-        const certificateContractEventHandler: ContractEventHandler = nnordicenergy ContractEventHandler(
+        const certificateContractEventHandler: ContractEventHandler = nordicenergy ContractEventHandler(
             conf.blockchainProperties.certificateLogicInstance,
             currentBlockNumber
         );
 
         certificateContractEventHandler.onEvent('LogCertificateRetired', async (event: any) =>
             this.props.actions.certificateCreatedOrUpdated(
-                await nnordicenergy Certificate.Entity(
+                await nordicenergy Certificate.Entity(
                     event.returnValues._certificateId,
                     this.props.configuration
                 ).sync()
@@ -107,7 +107,7 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
 
         certificateContractEventHandler.onEvent('LogCertificateSplit', async (event: any) =>
             this.props.actions.certificateCreatedOrUpdated(
-                await nnordicenergy Certificate.Entity(
+                await nordicenergy Certificate.Entity(
                     event.returnValues._certificateId,
                     this.props.configuration
                 ).sync()
@@ -116,7 +116,7 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
 
         certificateContractEventHandler.onEvent('Transfer', async (event: any) => {
             this.props.actions.certificateCreatedOrUpdated(
-                await nnordicenergy Certificate.Entity(
+                await nordicenergy Certificate.Entity(
                     event.returnValues._tokenId,
                     this.props.configuration
                 ).sync()
@@ -125,7 +125,7 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
 
         certificateContractEventHandler.onEvent('LogPublishForSale', async (event: any) => {
             this.props.actions.certificateCreatedOrUpdated(
-                await nnordicenergy Certificate.Entity(
+                await nordicenergy Certificate.Entity(
                     event.returnValues._entityId,
                     this.props.configuration
                 ).sync()
@@ -134,26 +134,26 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
 
         certificateContractEventHandler.onEvent('LogUnpublishForSale', async (event: any) => {
             this.props.actions.certificateCreatedOrUpdated(
-                await nnordicenergy Certificate.Entity(
+                await nordicenergy Certificate.Entity(
                     event.returnValues._entityId,
                     this.props.configuration
                 ).sync()
             );
         });
 
-        const demandContractEventHandler: ContractEventHandler = nnordicenergy ContractEventHandler(
+        const demandContractEventHandler: ContractEventHandler = nordicenergy ContractEventHandler(
             conf.blockchainProperties.marketLogicInstance,
             currentBlockNumber
         );
 
-        demandContractEventHandler.onEvent('createdNnordicenergyDemand', async (event: any) => {
+        demandContractEventHandler.onEvent('creatednordicenergyDemand', async (event: any) => {
             const demandAlreadyExists = this.props.demands.some(d => d.id === event.returnValues._demandId);
 
             if (demandAlreadyExists) {
                 return;
             }
 
-            const demand = await (nnordicenergy Demand.Entity(
+            const demand = await (nordicenergy Demand.Entity(
                 event.returnValues._demandId,
                 this.props.configuration).sync()
             );
@@ -165,14 +165,14 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
 
         demandContractEventHandler.onEvent('deletedDemand', async (event: any) =>
             this.props.actions.demandDeleted(
-                await (nnordicenergy Demand.Entity(
+                await (nordicenergy Demand.Entity(
                     event.returnValues._demandId,
                     this.props.configuration).sync()
                 )
             )
         );
 
-        const eventHandlerManager: EventHandlerManager = nnordicenergy EventHandlerManager(4000, conf);
+        const eventHandlerManager: EventHandlerManager = nordicenergy EventHandlerManager(4000, conf);
         eventHandlerManager.registerEventHandler(certificateContractEventHandler);
         eventHandlerManager.registerEventHandler(demandContractEventHandler);
         eventHandlerManager.start();
@@ -194,9 +194,9 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
         const params: any = queryString.parse(this.props.location.search);
 
         if (params.rpc) {
-            web3 = nnordicenergy Web3(params.rpc);
+            web3 = nordicenergy Web3(params.rpc);
         } else if ((window as any).ethereum) {
-            web3 = nnordicenergy Web3((window as any).ethereum);
+            web3 = nordicenergy Web3((window as any).ethereum);
             try {
                 // Request account access if needed
                 await (window as any).ethereum.enable();
@@ -204,7 +204,7 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
                 // User denied account access...
             }
         } else if ((window as any).web3) {
-            web3 = nnordicenergy Web3(web3.currentProvider);
+            web3 = nordicenergy Web3(web3.currentProvider);
         }
 
         let blockchainProperties: Configuration.BlockchainProperties;
@@ -234,7 +234,7 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
                 logger: Winston.createLogger({
                     level: 'debug',
                     format: Winston.format.combine(Winston.format.colorize(), Winston.format.simple()),
-                    transports: [nnordicenergy Winston.transports.Console({ level: 'silly' })]
+                    transports: [nordicenergy Winston.transports.Console({ level: 'silly' })]
                 })
             };
         } catch (error) {
@@ -257,7 +257,7 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
         const accounts: string[] = await conf.blockchainProperties.web3.eth.getAccounts();
 
         const currentUser: User =
-            accounts.length > 0 ? await nnordicenergy User(accounts[0], conf as any).sync() : null;
+            accounts.length > 0 ? await nordicenergy User(accounts[0], conf as any).sync() : null;
 
         (await ProducingAsset.getAllAssets(conf)).forEach((p: ProducingAsset.Entity) =>
             this.props.actions.producingAssetCreatedOrUpdated(p)

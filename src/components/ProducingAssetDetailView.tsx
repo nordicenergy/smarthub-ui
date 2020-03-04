@@ -1,5 +1,5 @@
-// Copyright 2018 Energy Web Foundation
-// This file is part of the snarthub Application brought to you by the Energy Web Foundation,
+// Copyright 2018 Nordic Energy
+// This file is part of the snarthub Application brought to you by the Nordic Energy,
 // a global non-profit organization focused on accelerating blockchain technology across the energy sector,
 // incorporated in Zug, Switzerland.
 //
@@ -50,7 +50,7 @@ export interface IDetailVinordicenergyProps {
 }
 
 export interface IDetailVinordicenergyState {
-    nnordicenergyId: number;
+    nordicenergyId: number;
     owner: User;
     notSoldCertificates: number;
 }
@@ -59,7 +59,7 @@ class ProducingAssetDetailVinordicenergyClass extends React.Component<IDetailVin
     constructor(props: IDetailVinordicenergyProps) {
         super(props);
         this.state = {
-            nnordicenergyId: null,
+            nordicenergyId: null,
             owner: null,
             notSoldCertificates: 0
         };
@@ -67,15 +67,15 @@ class ProducingAssetDetailVinordicenergyClass extends React.Component<IDetailVin
     }
 
     onInputChange(e: any): void {
-        this.setState({ nnordicenergyId: e.target.value });
+        this.setState({ nordicenergyId: e.target.value });
     }
 
     async componentDidMount(): Promise<void> {
         await this.getOwner(this.props);
     }
 
-    async componentWillReceiveProps(nnordicenergyProps: IDetailVinordicenergyProps): Promise<void> {
-        await this.getOwner(nnordicenergyProps);
+    async componentWillReceiveProps(nordicenergyProps: IDetailVinordicenergyProps): Promise<void> {
+        await this.getOwner(nordicenergyProps);
     }
 
     async getOwner(props: IDetailVinordicenergyProps): Promise<void> {
@@ -97,7 +97,7 @@ class ProducingAssetDetailVinordicenergyClass extends React.Component<IDetailVin
                     });
                 }
                 this.setState({
-                    owner: await nnordicenergy User(
+                    owner: await nordicenergy User(
                         selectedAsset.owner.address,
                         props.conf as any
                     ).sync()
@@ -294,7 +294,7 @@ class ProducingAssetDetailVinordicenergyClass extends React.Component<IDetailVin
                         <Link
                             className="btn btn-primary find-asset-button"
                             to={`/${this.props.baseUrl}/assets/producing_detail_vinordicenergy/${
-                                this.state.nnordicenergyId
+                                this.state.nordicenergyId
                             }`}
                         >
                             Find Asset

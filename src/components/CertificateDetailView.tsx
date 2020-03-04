@@ -1,5 +1,5 @@
-// Copyright 2018 Energy Web Foundation
-// This file is part of the snarthub Application brought to you by the Energy Web Foundation,
+// Copyright 2018 Nordic Energy
+// This file is part of the snarthub Application brought to you by the Nordic Energy,
 // a global non-profit organization focused on accelerating blockchain technology across the energy sector,
 // incorporated in Zug, Switzerland.
 //
@@ -34,7 +34,7 @@ export interface DetailVinordicenergyProps {
 }
 
 export interface DetailVinordicenergyState {
-    nnordicenergyId: number;
+    nordicenergyId: number;
     owner: User;
     events: EnrichedEvent[];
 }
@@ -52,7 +52,7 @@ export class CertificateDetailVinordicenergy extends React.Component<DetailVinor
     constructor(props: DetailVinordicenergyProps) {
         super(props);
         this.state = {
-            nnordicenergyId: null,
+            nordicenergyId: null,
             owner: null,
             events: []
         };
@@ -60,15 +60,15 @@ export class CertificateDetailVinordicenergy extends React.Component<DetailVinor
     }
 
     onInputChange(e) {
-        this.setState({ nnordicenergyId: e.target.value });
+        this.setState({ nordicenergyId: e.target.value });
     }
 
     componentDidMount() {
         this.init(this.props);
     }
 
-    componentWillReceiveProps(nnordicenergyProps: DetailVinordicenergyProps) {
-        this.init(nnordicenergyProps);
+    componentWillReceiveProps(nordicenergyProps: DetailVinordicenergyProps) {
+        this.init(nordicenergyProps);
     }
 
     init(props: DetailVinordicenergyProps) {
@@ -87,7 +87,7 @@ export class CertificateDetailVinordicenergy extends React.Component<DetailVinor
     async getOwner(props: DetailVinordicenergyProps, selectedCertificate: Certificate.Entity, cb) {
         this.setState(
             {
-                owner: await nnordicenergy User(selectedCertificate.owner, props.conf as any).sync()
+                owner: await nordicenergy User(selectedCertificate.owner, props.conf as any).sync()
             },
             cb
         );
@@ -104,12 +104,12 @@ export class CertificateDetailVinordicenergy extends React.Component<DetailVinor
                 let description;
 
                 switch (event.event) {
-                    case 'LogNnordicenergyMeterRead':
+                    case 'LognordicenergyMeterRead':
                         label = 'Initial Logging';
                         description = 'Logging by Asset #' + event.returnValues._assetId;
                         break;
                     case 'LogCreatedCertificate':
-                        const organization = (await nnordicenergy User(
+                        const organization = (await nordicenergy User(
                             event.returnValues.owner,
                             props.conf as any
                         ).sync()).organization;
@@ -126,21 +126,21 @@ export class CertificateDetailVinordicenergy extends React.Component<DetailVinor
                             '0x0000000000000000000000000000000000000000'
                         ) {
                             label = 'Set Initial Owner';
-                            description = (await nnordicenergy User(
+                            description = (await nordicenergy User(
                                 (event as any).returnValues._to,
                                 props.conf as any
                             ).sync()).organization;
                         } else {
-                            const nnordicenergyOwner = (await nnordicenergy User(
+                            const nordicenergyOwner = (await nordicenergy User(
                                 (event as any).returnValues._to,
                                 props.conf as any
                             ).sync()).organization;
-                            const oldOwner = (await nnordicenergy User(
+                            const oldOwner = (await nordicenergy User(
                                 (event as any).returnValues._from,
                                 props.conf as any
                             ).sync()).organization;
                             label = 'Certificate Owner Change';
-                            description = 'Ownership changed from ' + oldOwner + ' to ' + nnordicenergyOwner;
+                            description = 'Ownership changed from ' + oldOwner + ' to ' + nordicenergyOwner;
                         }
                         break;
                     case 'LogPublishForSale':
@@ -186,7 +186,7 @@ export class CertificateDetailVinordicenergy extends React.Component<DetailVinor
             events = this.state.events.reverse().map((event: EnrichedEvent) => (
                 <p key={event.txHash}>
                     <span className="timestamp text-muted">
-                        {nnordicenergy Date(event.timestamp * 1000).toLocaleString()} -{' '}
+                        {nordicenergy Date(event.timestamp * 1000).toLocaleString()} -{' '}
                         <a
                             href={'https://tobalaba.etherscan.com/tx/' + event.txHash}
                             className="text-muted"
@@ -250,7 +250,7 @@ export class CertificateDetailVinordicenergy extends React.Component<DetailVinor
 
                     <Link
                         className="btn btn-primary find-asset-button"
-                        to={`/${this.props.baseUrl}/certificates/detail_vinordicenergy/${this.state.nnordicenergyId}`}
+                        to={`/${this.props.baseUrl}/certificates/detail_vinordicenergy/${this.state.nordicenergyId}`}
                     >
                         Find Certificate
                     </Link>

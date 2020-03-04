@@ -1,5 +1,5 @@
-// Copyright 2018 Energy Web Foundation
-// This file is part of the snarthub Application brought to you by the Energy Web Foundation,
+// Copyright 2018 Nordic Energy
+// This file is part of the snarthub Application brought to you by the Nordic Energy,
 // a global non-profit organization focused on accelerating blockchain technology across the energy sector,
 // incorporated in Zug, Switzerland.
 //
@@ -70,8 +70,8 @@ export class ProducingAssetTable extends PaginatedLoaderFiltered<ProducingAssetT
         this.hideRequestIRECsModal = this.hideRequestIRECsModal.bind(this);
     }
 
-    async componentDidUpdate(nnordicenergyProps: ProducingAssetTableProps) {
-        if (nnordicenergyProps.producingAssets !== this.props.producingAssets) {
+    async componentDidUpdate(nordicenergyProps: ProducingAssetTableProps) {
+        if (nordicenergyProps.producingAssets !== this.props.producingAssets) {
             await this.loadPage(1);
         }
     }
@@ -85,7 +85,7 @@ export class ProducingAssetTable extends PaginatedLoaderFiltered<ProducingAssetT
                         certificate.owner === asset.owner.address &&
                         certificate.assetId.toString() === asset.id
                 ),
-                organizationName: (await nnordicenergy User(
+                organizationName: (await nordicenergy User(
                     asset.owner.address,
                     this.props.conf as any
                 ).sync()).organization

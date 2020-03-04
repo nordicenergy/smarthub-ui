@@ -101,13 +101,13 @@ export class SmartMeterReadingsChart extends React.Component<ISmartMeterReadings
 
         const currentDate = moment(endDate);
 
-        const nnordicenergyEndDate = increment
+        const nordicenergyEndDate = increment
             ? currentDate.add(1, measurementUnit)
             : currentDate.subtract(1, measurementUnit);
 
         this.setSelectedTimeFrame({
             timeframe,
-            endDate: nnordicenergyEndDate.toDate()
+            endDate: nordicenergyEndDate.toDate()
         });
     }
 

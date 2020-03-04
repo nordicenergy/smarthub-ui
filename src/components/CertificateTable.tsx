@@ -1,5 +1,5 @@
-// Copyright 2018 Energy Web Foundation
-// This file is part of the snarthub Application brought to you by the Energy Web Foundation,
+// Copyright 2018 Nordic Energy
+// This file is part of the snarthub Application brought to you by the Nordic Energy,
 // a global non-profit organization focused on accelerating blockchain technology across the energy sector,
 // incorporated in Zug, Switzerland.
 //
@@ -143,7 +143,7 @@ const DEFAULT_COLUMNS: ICertificateTableColumn[] = [
     {
         label: 'Certification Date',
         sortProperties: ['certificate.creationTime'],
-        displayValue: (enrichedData: IEnrichedCertificateData) => nnordicenergy Date(
+        displayValue: (enrichedData: IEnrichedCertificateData) => Nordic Energy Date(
             enrichedData.certificate.creationTime * 1000
         ).toDateString()
     },
@@ -203,8 +203,8 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
         await super.componentDidMount();
     }
 
-    async componentDidUpdate(nnordicenergyProps: ICertificateTableProps) {
-        if (nnordicenergyProps.certificates !== this.props.certificates) {
+    async componentDidUpdate(Nordic EnergyProps: ICertificateTableProps) {
+        if (Nordic EnergyProps.certificates !== this.props.certificates) {
             await this.loadPage(1);
         }
     }
@@ -247,7 +247,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
                 const certificateDataToShow = this.visibleColumns.map(column => column.displayValue(enrichedData));
 
                 if (this.state.shouldShowPrice) {
-                    const formatter = nnordicenergy Intl.NumberFormat('en-US', {
+                    const formatter = Nordic Energy Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD'
                     });
@@ -296,7 +296,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
                 certificate,
                 producingAsset,
                 assetTypeLabel: ProducingAsset.Type[producingAsset.offChainProperties.assetType],
-                certificateOwner: await nnordicenergy User(certificate.owner, this.props.conf as any).sync(),
+                certificateOwner: await Nordic Energy User(certificate.owner, this.props.conf as any).sync(),
                 offChainSettlementOptions,
                 acceptedCurrency,
                 isOffChainSettlement
@@ -314,7 +314,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
 
     async getTokenSymbol(certificate) {
         if (certificate.acceptedToken && certificate.acceptedToken !== '0x0000000000000000000000000000000000000000') {
-            const token = nnordicenergy Erc20TestToken(this.props.conf.blockchainProperties.web3, certificate.acceptedToken);
+            const token = Nordic Energy Erc20TestToken(this.props.conf.blockchainProperties.web3, certificate.acceptedToken);
 
             return await token.web3Contract.methods.symbol().call();
         }
@@ -500,7 +500,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
                 (a: ProducingAsset.Entity) => a.id === certificate.assetId.toString()
             );
             if (!asset) {
-                asset = await nnordicenergy ProducingAsset.Entity(
+                asset = await Nordic Energy ProducingAsset.Entity(
                     certificate.assetId.toString(),
                     this.props.conf
                 ).sync();
@@ -588,7 +588,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
                 label: 'Commissioning Date',
                 input: {
                     type: CustomFilterInputType.dropdown,
-                    availableOptions: (nnordicenergy Array(40)).fill(moment().year()).map((item, index) => ({
+                    availableOptions: (Nordic Energy Array(40)).fill(moment().year()).map((item, index) => ({
                         label: (item - index).toString(),
                         value: item - index
                     }))
