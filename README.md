@@ -1,6 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/68120b09-c8da-4407-bcdd-8e3e237e0675/deploy-status)](https://app.netlify.com/sites/nordicenergy-smarthub/deploys)
-
-# SmartHub UI
+#SmartHub UI
 
 ## Install
 
@@ -13,3 +11,4 @@ Afterward, the webpage can be accessed with `localhost:3000/COO-CONTRACT_ADDRESS
 
 ### Web3-object
 In order to use the UI and SmartHub, you need a web3-provider. We recommend [MetaMask](https://metamask.io). Make sure your MetaMask extension is pointed to `localhost:8545`.
+# smarthub-ui

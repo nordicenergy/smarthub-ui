@@ -55,7 +55,7 @@
     "no-internal-module": true,
     "no-unsafe-finally": true,
     "no-var-keyword": true,
-    "newline-before-return": true,
+    "nnordicenergyline-before-return": true,
     "strict-boolean-expressions": false,
     "react-a11y-anchors": false,
     "react-a11y-role-has-required-aria-props": false,
