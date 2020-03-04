@@ -140,12 +140,12 @@
   }
 
   .toast-info {
-    background-color: #2f96b4;
+    background-color: #ffcc00;
   }
   .toast-warning {
-    background-color: #f89406;
+    background-color: #e6b800;
   }
-  
+
   .toast-progress {
     position: absolute;
     left: 0;
@@ -156,7 +156,7 @@
     -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
     filter: alpha(opacity=40);
   }
-  
+
   /*Responsive Design*/
   @media all and (max-width: 240px) {
     #toast-container > div {
@@ -184,4 +184,3 @@
       width: 25em;
     }
   }
-  

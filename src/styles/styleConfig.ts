@@ -19,7 +19,7 @@ export const DEFAULT_MATERIAL_THEME = () => {
         },
         background: {
             paper: STYLE_CONFIG.BACKGROUND_COLOR_DARK,
-            default: "#f44336"
+            default: "##ffd11a"
         },
         text: {
             primary: STYLE_CONFIG.WHITE,
