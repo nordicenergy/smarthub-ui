@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/68120b09-c8da-4407-bcdd-8e3e237e0675/deploy-status)](https://app.netlify.com/sites/nordicenergy-smarthub/deploys)
+
 # SmartHub UI
 
 ## Install
