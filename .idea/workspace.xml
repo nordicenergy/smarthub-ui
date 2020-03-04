@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b8ca568d-6af1-434d-bdf4-94ce49057849" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="ghCizCVc" />
+  </component>
+  <component name="ProjectId" id="1YegjmS05f4hqd8hloqG1pLQHe8" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+  </component>
+  <component name="RunManager" selected="Docker.SmartHub">
+    <configuration name="SmartHub" type="docker-deploy" factoryName="dockerfile" server-name="SmartHub">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="buildCliOptions" value="" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="contextFolderPath" value=".smarthub" />
+          <option name="entrypoint" value="" />
+          <option name="imageTag" value="latest" />
+          <option name="publishAllPorts" value="true" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build-full" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build-full" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v13.9.0/bin/node" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.SmartHub" />
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.build-full" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b8ca568d-6af1-434d-bdf4-94ce49057849" name="Default Changelist" comment="" />
+      <created>1583308611923</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583308611923</updated>
+      <workItem from="1583308614634" duration="1166000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="559" y="198" key="#Docker" timestamp="1583310172364">
+      <screen x="0" y="23" width="1920" height="1020" />
+    </state>
+    <state x="559" y="198" key="#Docker/0.23.1920.1020@0.23.1920.1020" timestamp="1583310172364" />
+    <state x="559" y="198" key="#Path_mapping" timestamp="1583310169020">
+      <screen x="0" y="23" width="1920" height="1020" />
+    </state>
+    <state x="559" y="198" key="#Path_mapping/0.23.1920.1020@0.23.1920.1020" timestamp="1583310169020" />
+    <state x="424" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583310221330">
+      <screen x="0" y="23" width="1920" height="1020" />
+    </state>
+    <state x="424" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1920.1020@0.23.1920.1020" timestamp="1583310221330" />
+    <state width="1876" height="252" key="GridCell.Tab.0.bottom" timestamp="1583309894687">
+      <screen x="0" y="23" width="1920" height="1020" />
+    </state>
+    <state width="1876" height="252" key="GridCell.Tab.0.bottom/0.23.1920.1020@0.23.1920.1020" timestamp="1583309894687" />
+    <state width="1876" height="252" key="GridCell.Tab.0.center" timestamp="1583309894686">
+      <screen x="0" y="23" width="1920" height="1020" />
+    </state>
+    <state width="1876" height="252" key="GridCell.Tab.0.center/0.23.1920.1020@0.23.1920.1020" timestamp="1583309894686" />
+    <state width="1876" height="252" key="GridCell.Tab.0.left" timestamp="1583309894685">
+      <screen x="0" y="23" width="1920" height="1020" />
+    </state>
+    <state width="1876" height="252" key="GridCell.Tab.0.left/0.23.1920.1020@0.23.1920.1020" timestamp="1583309894685" />
+    <state width="1876" height="252" key="GridCell.Tab.0.right" timestamp="1583309894686">
+      <screen x="0" y="23" width="1920" height="1020" />
+    </state>
+    <state width="1876" height="252" key="GridCell.Tab.0.right/0.23.1920.1020@0.23.1920.1020" timestamp="1583309894686" />
+  </component>
+</project>
