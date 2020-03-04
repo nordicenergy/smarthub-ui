@@ -14,7 +14,7 @@
 //
 // @authors: slock.it GmbH; Heiko Burkhardt, heiko.burkhardt@slock.it; Martin Kuechler, martin.kuchler@slock.it
 
-import { Certificate } from 'nordicenergy-origin-lib';
+import { Certificate } from 'nordicenergy-smarthub-lib';
 import { Demand } from 'nordicenergy-market-lib';
 import { ProducingAsset, ConsumingAsset } from 'nordicenergy-asset-registry-lib';
 import { User } from 'nordicenergy-user-registry-lib';

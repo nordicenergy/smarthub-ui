@@ -1,9 +1,9 @@
 // Copyright 2018 Energy Web Foundation
-// This file is part of the Origin Application brought to you by the Energy Web Foundation,
+// This file is part of the snarthub Application brought to you by the Energy Web Foundation,
 // a global non-profit organization focused on accelerating blockchain technology across the energy sector,
 // incorporated in Zug, Switzerland.
 //
-// The Origin Application is free software: you can redistribute it and/or modify
+// The snarthub Application is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
@@ -18,7 +18,7 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 
-import { Certificate, TradableEntity } from 'nordicenergy-origin-lib';
+import { Certificate, TradableEntity } from 'nordicenergy-snarthub-lib';
 import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
 import { User } from 'nordicenergy-user-registry-lib';
 import { Demand } from 'nordicenergy-market-lib';

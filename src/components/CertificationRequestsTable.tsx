@@ -4,7 +4,7 @@ import { Configuration } from 'nordicenergy-utils-general-lib';
 
 import { Table } from './Table/Table';
 import TableUtils from './Table/TableUtils';
-import { CertificateLogic } from 'nordicenergy-origin-lib';
+import { CertificateLogic } from 'nordicenergy-snarthub-lib';
 import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
 import { User, Role } from 'nordicenergy-user-registry-lib';
 import { showNotification, NotificationType } from '../utils/notifications';

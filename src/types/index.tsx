@@ -16,7 +16,7 @@
 
 import { ProducingAsset, ConsumingAsset } from 'nordicenergy-asset-registry-lib';
 import { User } from 'nordicenergy-user-registry-lib';
-import { Certificate } from 'nordicenergy-origin-lib';
+import { Certificate } from 'nordicenergy-smarthub-lib';
 import { Configuration } from 'nordicenergy-utils-general-lib';
 import { Demand } from 'nordicenergy-market-lib';
 import { IGeneralState } from '../features/general/reducer';

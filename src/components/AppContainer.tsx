@@ -1,9 +1,9 @@
 // Copyright 2018 Energy Web Foundation
-// This file is part of the Origin Application brought to you by the Energy Web Foundation,
+// This file is part of the snarthub Application brought to you by the Energy Web Foundation,
 // a global non-profit organization focused on accelerating blockchain technology across the energy sector,
 // incorporated in Zug, Switzerland.
 //
-// The Origin Application is free software: you can redistribute it and/or modify
+// The snarthub Application is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
@@ -25,7 +25,7 @@ import {
     Demand,
     createBlockchainProperties as marketCreateBlockchainProperties
 } from 'nordicenergy-market-lib';
-import { Certificate, createBlockchainProperties } from 'nordicenergy-origin-lib';
+import { Certificate, createBlockchainProperties } from 'nordicenergy-snarthub-lib';
 import { User } from 'nordicenergy-user-registry-lib';
 
 import { Certificates } from './Certificates';
@@ -178,8 +178,8 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
         eventHandlerManager.start();
     }
 
-    async getMarketLogicInstance(originIssuerContractLookupAddress: string, web3: Web3) {
-        const response = await axios.get(`${API_BASE_URL}/OriginContractLookupMarketLookupMapping/${originIssuerContractLookupAddress.toLowerCase()}`);
+    async getMarketLogicInstance(snarthubIssuerContractLookupAddress: string, web3: Web3) {
+        const response = await axios.get(`${API_BASE_URL}/snarthubContractLookupMarketLookupMapping/${snarthubIssuerContractLookupAddress.toLowerCase()}`);
 
         const marketBlockchainProperties: Configuration.BlockchainProperties = (await marketCreateBlockchainProperties(
             web3,
@@ -189,7 +189,7 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
         return marketBlockchainProperties.marketLogicInstance;
     }
 
-    async initConf(originIssuerContractLookupAddress: string): Promise<Configuration.Entity> {
+    async initConf(snarthubIssuerContractLookupAddress: string): Promise<Configuration.Entity> {
         let web3: Web3 = null;
         const params: any = queryString.parse(this.props.location.search);
 
@@ -212,11 +212,11 @@ class AppContainerClass extends React.Component<IAppContainerProps, IAppContaine
         try {
             blockchainProperties = (await createBlockchainProperties(
                 web3,
-                originIssuerContractLookupAddress
+                snarthubIssuerContractLookupAddress
             ));
 
             blockchainProperties.marketLogicInstance = await this.getMarketLogicInstance(
-                originIssuerContractLookupAddress,
+                snarthubIssuerContractLookupAddress,
                 web3
             );
 

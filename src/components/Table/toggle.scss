@@ -55,13 +55,13 @@
 }
 
 .react-toggle--checked .react-toggle-track {
-    background-color: #50d2c2;
-    border: 1px solid #323e47;
+    background-color: #cca300;
+    border: 1px solid #333333;
     border-radius: 22px;
 }
 
 .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
-    background-color: #3c988d;
+    background-color: #ffcc00
 }
 
 .react-toggle-track-check {
@@ -116,7 +116,7 @@
     height: 22px;
     // border: 1px solid #616161;
     border-radius: 50%;
-    background-color: #9e9e9e;
+    background-color: #cca300;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -130,7 +130,7 @@
 .react-toggle--checked .react-toggle-thumb {
     left: 38px;
     background-color: #ffffff;
-    border-color: #50d2c2;
+    border-color: #cca300;
 }
 
 // .react-toggle--focus .react-toggle-thumb {
