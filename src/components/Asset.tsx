@@ -15,18 +15,18 @@
 // @authors: slock.it GmbH; Heiko Burkhardt, heiko.burkhardt@slock.it; Martin Kuechler, martin.kuchler@slock.it
 
 import * as React from 'react';
-import { Certificate } from 'ew-origin-lib';
-import { User } from 'ew-user-registry-lib';
+import { Certificate } from 'nordicenergy-origin-lib';
+import { User } from 'nordicenergy-user-registry-lib';
 import { Route, NavLink, Redirect } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { ProducingAssetTable } from './ProducingAssetTable';
 import { ConsumingAssetTable } from './ConsumingAssetTable';
 import { PageContent } from '../elements/PageContent/PageContent';
-import { ProducingAssetDetailView } from './ProducingAssetDetailView';
-import { ConsumingAssetDetailView } from './ConsumingAssetDetailView';
-import { Configuration } from 'ew-utils-general-lib';
-import { Demand } from 'ew-market-lib';
-import { ProducingAsset, ConsumingAsset } from 'ew-asset-registry-lib';
+import { ProducingAssetDetailVinordicenergy } from './ProducingAssetDetailVinordicenergy';
+import { ConsumingAssetDetailVinordicenergy } from './ConsumingAssetDetailVinordicenergy';
+import { Configuration } from 'nordicenergy-utils-general-lib';
+import { Demand } from 'nordicenergy-market-lib';
+import { ProducingAsset, ConsumingAsset } from 'nordicenergy-asset-registry-lib';
 
 export interface AssetProps {
     conf: Configuration.Entity;
@@ -71,9 +71,9 @@ export class Asset extends React.Component<AssetProps> {
         );
     }
 
-    ProductionDetailView(id: number): JSX.Element {
+    ProductionDetailVinordicenergy(id: number): JSX.Element {
         return (
-            <ProducingAssetDetailView
+            <ProducingAssetDetailVinordicenergy
                 id={id}
                 baseUrl={this.props.baseUrl}
                 producingAssets={this.props.producingAssets}
@@ -86,9 +86,9 @@ export class Asset extends React.Component<AssetProps> {
         );
     }
 
-    ConsumingDetailView(id: number): JSX.Element {
+    ConsumingDetailVinordicenergy(id: number): JSX.Element {
         return (
-            <ConsumingAssetDetailView
+            <ConsumingAssetDetailVinordicenergy
                 id={id}
                 baseUrl={this.props.baseUrl}
                 consumingAssets={this.props.consumingAssets}
@@ -111,12 +111,12 @@ export class Asset extends React.Component<AssetProps> {
                 component: this.ConsumingAssetTable
             },
             {
-                key: 'producing_detail_view',
+                key: 'producing_detail_vinordicenergy',
                 label: 'Production Detail',
                 component: null
             },
             {
-                key: 'consuming_detail_view',
+                key: 'consuming_detail_vinordicenergy',
                 label: 'Consumption Detail',
                 component: null
             }
@@ -149,12 +149,12 @@ export class Asset extends React.Component<AssetProps> {
                         const matches = AssetsMenu.filter(item => {
                             return item.key === key;
                         });
-                        if (matches.length > 0 && key === 'producing_detail_view') {
+                        if (matches.length > 0 && key === 'producing_detail_vinordicenergy') {
                             matches[0].component = () =>
-                                this.ProductionDetailView(id ? parseInt(id, 10) : id);
-                        } else if (matches.length > 0 && key === 'consuming_detail_view') {
+                                this.ProductionDetailVinordicenergy(id ? parseInt(id, 10) : id);
+                        } else if (matches.length > 0 && key === 'consuming_detail_vinordicenergy') {
                             matches[0].component = () =>
-                                this.ConsumingDetailView(id ? parseInt(id, 10) : id);
+                                this.ConsumingDetailVinordicenergy(id ? parseInt(id, 10) : id);
                         }
 
                         return (

@@ -18,19 +18,19 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 
-import { Certificate, TradableEntity } from 'ew-origin-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
-import { User } from 'ew-user-registry-lib';
-import { Demand } from 'ew-market-lib';
-import { Configuration, TimeFrame, Currency } from 'ew-utils-general-lib';
-import { MatcherLogic } from 'ew-market-matcher';
+import { Certificate, TradableEntity } from 'nordicenergy-origin-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
+import { User } from 'nordicenergy-user-registry-lib';
+import { Demand } from 'nordicenergy-market-lib';
+import { Configuration, TimeFrame, Currency } from 'nordicenergy-utils-general-lib';
+import { MatcherLogic } from 'nordicenergy-market-matcher';
 
 import TableUtils from './Table/TableUtils';
 import { showNotification, NotificationType } from '../utils/notifications';
 import { PublishForSaleModal } from '../elements/Modal/PublishForSaleModal';
 import { BuyCertificateModal } from '../elements/Modal/BuyCertificateModal';
 import { BuyCertificateBulkModal } from '../elements/Modal/BuyCertificateBulkModal';
-import { Erc20TestToken } from 'ew-erc-test-contracts';
+import { Erc20TestToken } from 'nordicenergy-erc-test-contracts';
 import { IPaginatedLoaderFetchDataParameters, IPaginatedLoaderFetchDataReturnValues } from './Table/PaginatedLoader';
 import { IBatchableAction } from './Table/ColumnBatchActions';
 import { AdvancedTable } from './Table/AdvancedTable';
@@ -62,7 +62,7 @@ export interface IEnrichedCertificateData {
 export interface ICertificatesState extends IPaginatedLoaderFilteredSortedState {
     selectedState: SelectedState;
     selectedCertificates: Certificate.Entity[];
-    detailViewForCertificateId: number;
+    detailVinordicenergyForCertificateId: number;
     matchedCertificates: Certificate.Entity[];
     shouldShowPrice: boolean;
     showSellModal: boolean;
@@ -143,7 +143,7 @@ const DEFAULT_COLUMNS: ICertificateTableColumn[] = [
     {
         label: 'Certification Date',
         sortProperties: ['certificate.creationTime'],
-        displayValue: (enrichedData: IEnrichedCertificateData) => new Date(
+        displayValue: (enrichedData: IEnrichedCertificateData) => nnordicenergy Date(
             enrichedData.certificate.creationTime * 1000
         ).toDateString()
     },
@@ -164,7 +164,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
             ...getInitialPaginatedLoaderFilteredSortedState(),
             selectedState: SelectedState.Inbox,
             selectedCertificates: [],
-            detailViewForCertificateId: null,
+            detailVinordicenergyForCertificateId: null,
             matchedCertificates: [],
             shouldShowPrice: [
                 SelectedState.ForSale,
@@ -203,8 +203,8 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
         await super.componentDidMount();
     }
 
-    async componentDidUpdate(newProps: ICertificateTableProps) {
-        if (newProps.certificates !== this.props.certificates) {
+    async componentDidUpdate(nnordicenergyProps: ICertificateTableProps) {
+        if (nnordicenergyProps.certificates !== this.props.certificates) {
             await this.loadPage(1);
         }
     }
@@ -247,13 +247,13 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
                 const certificateDataToShow = this.visibleColumns.map(column => column.displayValue(enrichedData));
 
                 if (this.state.shouldShowPrice) {
-                    const formatter = new Intl.NumberFormat('en-US', {
+                    const formatter = nnordicenergy Intl.NumberFormat('en-US', {
                         style: 'currency',
                         currency: 'USD'
                     });
 
                     certificateDataToShow.splice(certificateDataToShow.length - 1, 0,
-                        enrichedData.isOffChainSettlement 
+                        enrichedData.isOffChainSettlement
                             ? formatter.format(enrichedData.offChainSettlementOptions.price / 100).replace('$', '')
                             : enrichedData.certificate.onChainDirectPurchasePrice
                     );
@@ -296,7 +296,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
                 certificate,
                 producingAsset,
                 assetTypeLabel: ProducingAsset.Type[producingAsset.offChainProperties.assetType],
-                certificateOwner: await new User(certificate.owner, this.props.conf as any).sync(),
+                certificateOwner: await nnordicenergy User(certificate.owner, this.props.conf as any).sync(),
                 offChainSettlementOptions,
                 acceptedCurrency,
                 isOffChainSettlement
@@ -314,7 +314,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
 
     async getTokenSymbol(certificate) {
         if (certificate.acceptedToken && certificate.acceptedToken !== '0x0000000000000000000000000000000000000000') {
-            const token = new Erc20TestToken(this.props.conf.blockchainProperties.web3, certificate.acceptedToken);
+            const token = nnordicenergy Erc20TestToken(this.props.conf.blockchainProperties.web3, certificate.acceptedToken);
 
             return await token.web3Contract.methods.symbol().call();
         }
@@ -500,7 +500,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
                 (a: ProducingAsset.Entity) => a.id === certificate.assetId.toString()
             );
             if (!asset) {
-                asset = await new ProducingAsset.Entity(
+                asset = await nnordicenergy ProducingAsset.Entity(
                     certificate.assetId.toString(),
                     this.props.conf
                 ).sync();
@@ -540,7 +540,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
 
     showCertificateDetails(certificateId: number) {
         this.setState({
-            detailViewForCertificateId: certificateId
+            detailVinordicenergyForCertificateId: certificateId
         });
     }
 
@@ -588,7 +588,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
                 label: 'Commissioning Date',
                 input: {
                     type: CustomFilterInputType.dropdown,
-                    availableOptions: (new Array(40)).fill(moment().year()).map((item, index) => ({
+                    availableOptions: (nnordicenergy Array(40)).fill(moment().year()).map((item, index) => ({
                         label: (item - index).toString(),
                         value: item - index
                     }))
@@ -688,7 +688,7 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
             buyModalForCertificate,
             buyModalForProducingAsset,
             currentSort,
-            detailViewForCertificateId,
+            detailVinordicenergyForCertificateId,
             formattedPaginatedData,
             pageSize,
             selectedCertificates,
@@ -701,11 +701,11 @@ export class CertificateTable extends PaginatedLoaderFilteredSorted<ICertificate
             total
         } = this.state;
 
-        if (detailViewForCertificateId !== null) {
+        if (detailVinordicenergyForCertificateId !== null) {
             return (
                 <Redirect
                     push={true}
-                    to={`/${this.props.baseUrl}/certificates/detail_view/${detailViewForCertificateId}`}
+                    to={`/${this.props.baseUrl}/certificates/detail_vinordicenergy/${detailVinordicenergyForCertificateId}`}
                 />
             );
         }

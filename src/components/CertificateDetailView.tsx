@@ -17,15 +17,15 @@
 import * as React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { Certificate } from 'ew-origin-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
-import { User } from 'ew-user-registry-lib';
-import { ProducingAssetDetailView } from './ProducingAssetDetailView';
+import { Certificate } from 'nordicenergy-origin-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
+import { User } from 'nordicenergy-user-registry-lib';
+import { ProducingAssetDetailVinordicenergy } from './ProducingAssetDetailVinordicenergy';
 
-import './DetailView.scss';
-import { Configuration } from 'ew-utils-general-lib';
+import './DetailVinordicenergy.scss';
+import { Configuration } from 'nordicenergy-utils-general-lib';
 
-export interface DetailViewProps {
+export interface DetailVinordicenergyProps {
     conf: Configuration.Entity;
     id: number;
     baseUrl: string;
@@ -33,8 +33,8 @@ export interface DetailViewProps {
     producingAssets: ProducingAsset.Entity[];
 }
 
-export interface DetailViewState {
-    newId: number;
+export interface DetailVinordicenergyState {
+    nnordicenergyId: number;
     owner: User;
     events: EnrichedEvent[];
 }
@@ -48,11 +48,11 @@ export interface EnrichedEvent {
 
 const TableWidth = [210, 210, 210, 210, 407];
 
-export class CertificateDetailView extends React.Component<DetailViewProps, DetailViewState> {
-    constructor(props: DetailViewProps) {
+export class CertificateDetailVinordicenergy extends React.Component<DetailVinordicenergyProps, DetailVinordicenergyState> {
+    constructor(props: DetailVinordicenergyProps) {
         super(props);
         this.state = {
-            newId: null,
+            nnordicenergyId: null,
             owner: null,
             events: []
         };
@@ -60,18 +60,18 @@ export class CertificateDetailView extends React.Component<DetailViewProps, Deta
     }
 
     onInputChange(e) {
-        this.setState({ newId: e.target.value });
+        this.setState({ nnordicenergyId: e.target.value });
     }
 
     componentDidMount() {
         this.init(this.props);
     }
 
-    componentWillReceiveProps(newProps: DetailViewProps) {
-        this.init(newProps);
+    componentWillReceiveProps(nnordicenergyProps: DetailVinordicenergyProps) {
+        this.init(nnordicenergyProps);
     }
 
-    init(props: DetailViewProps) {
+    init(props: DetailVinordicenergyProps) {
         if (props.id !== null && props.id !== undefined) {
             const selectedCertificate: Certificate.Entity = props.certificates.find(
                 (c: Certificate.Entity) => c.id === props.id.toString()
@@ -84,16 +84,16 @@ export class CertificateDetailView extends React.Component<DetailViewProps, Deta
         }
     }
 
-    async getOwner(props: DetailViewProps, selectedCertificate: Certificate.Entity, cb) {
+    async getOwner(props: DetailVinordicenergyProps, selectedCertificate: Certificate.Entity, cb) {
         this.setState(
             {
-                owner: await new User(selectedCertificate.owner, props.conf as any).sync()
+                owner: await nnordicenergy User(selectedCertificate.owner, props.conf as any).sync()
             },
             cb
         );
     }
 
-    async enrichEvent(props: DetailViewProps, selectedCertificate: Certificate.Entity) {
+    async enrichEvent(props: DetailVinordicenergyProps, selectedCertificate: Certificate.Entity) {
         const asset = this.props.producingAssets.find(
             (p: ProducingAsset.Entity) => p.id === selectedCertificate.assetId.toString()
         );
@@ -104,12 +104,12 @@ export class CertificateDetailView extends React.Component<DetailViewProps, Deta
                 let description;
 
                 switch (event.event) {
-                    case 'LogNewMeterRead':
+                    case 'LogNnordicenergyMeterRead':
                         label = 'Initial Logging';
                         description = 'Logging by Asset #' + event.returnValues._assetId;
                         break;
                     case 'LogCreatedCertificate':
-                        const organization = (await new User(
+                        const organization = (await nnordicenergy User(
                             event.returnValues.owner,
                             props.conf as any
                         ).sync()).organization;
@@ -126,21 +126,21 @@ export class CertificateDetailView extends React.Component<DetailViewProps, Deta
                             '0x0000000000000000000000000000000000000000'
                         ) {
                             label = 'Set Initial Owner';
-                            description = (await new User(
+                            description = (await nnordicenergy User(
                                 (event as any).returnValues._to,
                                 props.conf as any
                             ).sync()).organization;
                         } else {
-                            const newOwner = (await new User(
+                            const nnordicenergyOwner = (await nnordicenergy User(
                                 (event as any).returnValues._to,
                                 props.conf as any
                             ).sync()).organization;
-                            const oldOwner = (await new User(
+                            const oldOwner = (await nnordicenergy User(
                                 (event as any).returnValues._from,
                                 props.conf as any
                             ).sync()).organization;
                             label = 'Certificate Owner Change';
-                            description = 'Ownership changed from ' + oldOwner + ' to ' + newOwner;
+                            description = 'Ownership changed from ' + oldOwner + ' to ' + nnordicenergyOwner;
                         }
                         break;
                     case 'LogPublishForSale':
@@ -186,7 +186,7 @@ export class CertificateDetailView extends React.Component<DetailViewProps, Deta
             events = this.state.events.reverse().map((event: EnrichedEvent) => (
                 <p key={event.txHash}>
                     <span className="timestamp text-muted">
-                        {new Date(event.timestamp * 1000).toLocaleString()} -{' '}
+                        {nnordicenergy Date(event.timestamp * 1000).toLocaleString()} -{' '}
                         <a
                             href={'https://tobalaba.etherscan.com/tx/' + event.txHash}
                             className="text-muted"
@@ -223,7 +223,7 @@ export class CertificateDetailView extends React.Component<DetailViewProps, Deta
                     {
                         label: 'Producing Asset Id',
                         data: asset.id,
-                        link: `/${this.props.baseUrl}/assets/producing_detail_view/${asset.id}`
+                        link: `/${this.props.baseUrl}/assets/producing_detail_vinordicenergy/${asset.id}`
                     },
 
                     {
@@ -239,7 +239,7 @@ export class CertificateDetailView extends React.Component<DetailViewProps, Deta
         }
 
         return (
-            <div className="DetailViewWrapper">
+            <div className="DetailVinordicenergyWrapper">
                 <div className="FindAsset">
                     <input
                         onChange={this.onInputChange}
@@ -250,7 +250,7 @@ export class CertificateDetailView extends React.Component<DetailViewProps, Deta
 
                     <Link
                         className="btn btn-primary find-asset-button"
-                        to={`/${this.props.baseUrl}/certificates/detail_view/${this.state.newId}`}
+                        to={`/${this.props.baseUrl}/certificates/detail_vinordicenergy/${this.state.nnordicenergyId}`}
                     >
                         Find Certificate
                     </Link>
@@ -294,7 +294,7 @@ export class CertificateDetailView extends React.Component<DetailViewProps, Deta
                         )}
                     </div>
                     {selectedCertificate ? (
-                        <ProducingAssetDetailView
+                        <ProducingAssetDetailVinordicenergy
                             id={selectedCertificate.assetId}
                             baseUrl={this.props.baseUrl}
                             producingAssets={this.props.producingAssets}

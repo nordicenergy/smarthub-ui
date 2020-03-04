@@ -3,7 +3,7 @@ import { STYLE_CONFIG } from '../../styles/styleConfig';
 
 export class FilterIcon extends Component {
     render() {
-        return <svg width="15" height="19" viewBox="0 0 15 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        return <svg width="15" height="19" vinordicenergyBox="0 0 15 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Canvas" transform="translate(7022 2714)">
                 <g id="Filter">
                     <g id="Shape">

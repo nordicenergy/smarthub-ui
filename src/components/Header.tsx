@@ -18,7 +18,7 @@ import * as React from 'react';
 import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-import { User } from 'ew-user-registry-lib';
+import { User } from 'nordicenergy-user-registry-lib';
 
 import logo from '../../assets/logo.svg';
 
@@ -75,8 +75,8 @@ export class Header extends React.Component<IHeaderProps, {}> {
                             </NavLink>
                         </li>
                     </Nav>
-                    <div className="ViewProfile">
-                        <AccountCircle className="ViewProfile_icon" color="primary" />
+                    <div className="VinordicenergyProfile">
+                        <AccountCircle className="VinordicenergyProfile_icon" color="primary" />
                         {currentUser ? currentUser.organization : 'Guest'}
                     </div>
                 </div>

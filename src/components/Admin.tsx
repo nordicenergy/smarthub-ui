@@ -21,9 +21,9 @@ import { NavLink, Redirect, Route } from 'react-router-dom';
 
 import { PageContent } from '../elements/PageContent/PageContent';
 import { OnboardDemand } from './OnboardDemand';
-import { User } from 'ew-user-registry-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
-import { Configuration } from 'ew-utils-general-lib';
+import { User } from 'nordicenergy-user-registry-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
 
 export interface AdminProps {
     conf: Configuration.Entity;

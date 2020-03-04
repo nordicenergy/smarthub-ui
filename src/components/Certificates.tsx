@@ -18,15 +18,15 @@ import * as React from 'react';
 import { Route, NavLink, Redirect } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 
-import { Certificate } from 'ew-origin-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
-import { User, Role } from 'ew-user-registry-lib';
-import { Demand } from 'ew-market-lib';
-import { Configuration } from 'ew-utils-general-lib';
+import { Certificate } from 'nordicenergy-origin-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
+import { User, Role } from 'nordicenergy-user-registry-lib';
+import { Demand } from 'nordicenergy-market-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
 
 import { PageContent } from '../elements/PageContent/PageContent';
 import { CertificateTable, SelectedState } from './CertificateTable';
-import { CertificateDetailView } from './CertificateDetailView';
+import { CertificateDetailVinordicenergy } from './CertificateDetailVinordicenergy';
 import { CertificationRequestsTable } from './CertificationRequestsTable';
 
 export interface ICertificatesProps {
@@ -70,9 +70,9 @@ export class Certificates extends React.Component<ICertificatesProps> {
         );
     }
 
-    CertificateDetailView(id: number) {
+    CertificateDetailVinordicenergy(id: number) {
         return (
-            <CertificateDetailView
+            <CertificateDetailVinordicenergy
                 id={id}
                 baseUrl={this.props.baseUrl}
                 producingAssets={this.props.producingAssets}
@@ -138,8 +138,8 @@ export class Certificates extends React.Component<ICertificatesProps> {
                 show: !isIssuer
             },
             {
-                key: 'detail_view',
-                label: 'Detail View',
+                key: 'detail_vinordicenergy',
+                label: 'Detail Vinordicenergy',
                 component: null,
                 show: !isIssuer
             },
@@ -199,9 +199,9 @@ export class Certificates extends React.Component<ICertificatesProps> {
                             return item.key === key;
                         });
                         if (matches.length > 0) {
-                            if (key === 'detail_view') {
+                            if (key === 'detail_vinordicenergy') {
                                 matches[0].component = () =>
-                                    this.CertificateDetailView(id ? parseInt(id, 10) : id);
+                                    this.CertificateDetailVinordicenergy(id ? parseInt(id, 10) : id);
                             } else if (key === 'for_demand') {
                                 matches[0].component = () => this.ForDemandCertificates(id ? parseInt(id, 10) : id);
                             }

@@ -4,8 +4,8 @@ import moment from 'moment';
 import 'moment/min/locales.min';
 import { ButtonGroup, Button } from 'react-bootstrap';
 
-import { Configuration } from 'ew-utils-general-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
 
 import './SmartMeterReadingsChart.scss';
 import { STYLE_CONFIG } from '../styles/styleConfig';
@@ -101,13 +101,13 @@ export class SmartMeterReadingsChart extends React.Component<ISmartMeterReadings
 
         const currentDate = moment(endDate);
 
-        const newEndDate = increment
+        const nnordicenergyEndDate = increment
             ? currentDate.add(1, measurementUnit)
             : currentDate.subtract(1, measurementUnit);
 
         this.setSelectedTimeFrame({
             timeframe,
-            endDate: newEndDate.toDate()
+            endDate: nnordicenergyEndDate.toDate()
         });
     }
 

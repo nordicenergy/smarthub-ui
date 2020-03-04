@@ -19,11 +19,11 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { AppContainer } from './components/AppContainer';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddlnordicenergyare } from 'redux';
 import reducer from './reducers';
 
 import './index.scss';
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddlnordicenergyare from 'redux-saga';
 import sagas from './features/sagas';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { IStoreState } from './types';
@@ -35,25 +35,25 @@ import { DEFAULT_MATERIAL_THEME } from './styles/styleConfig';
 
 const IS_PRODUCTION = process.env.MODE === 'production';
 
-let middleware;
+let middlnordicenergyare;
 
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddlnordicenergyare = createSagaMiddlnordicenergyare();
 
 if (IS_PRODUCTION) {
-    middleware = applyMiddleware(sagaMiddleware);
+    middlnordicenergyare = applyMiddlnordicenergyare(sagaMiddlnordicenergyare);
 } else {
-    middleware = composeWithDevTools(
-        applyMiddleware(sagaMiddleware)
+    middlnordicenergyare = composeWithDevTools(
+        applyMiddlnordicenergyare(sagaMiddlnordicenergyare)
     );
 }
 
 const store = createStore<IStoreState>(
     reducer,
-    middleware
+    middlnordicenergyare
 );
 
 Object.keys(sagas).forEach((saga: keyof typeof sagas) => {
-    sagaMiddleware.run(sagas[saga]);
+    sagaMiddlnordicenergyare.run(sagas[saga]);
 });
 
 ReactDOM.render(

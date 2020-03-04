@@ -21,7 +21,7 @@ import { DatePicker } from "@material-ui/pickers";
 import renderHTML from 'react-render-html';
 import { Moment } from 'moment';
 import { PeriodToSeconds } from '../DemandTable';
-import { TimeFrame } from 'ew-utils-general-lib';
+import { TimeFrame } from 'nordicenergy-utils-general-lib';
 import { Pagination } from './Pagination';
 import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons';
 
@@ -120,7 +120,7 @@ export class Table extends React.Component<ITableProps, IState> {
                 ]
             },
             totalEnergy: 0,
-            date: new Date(),
+            date: nnordicenergy Date(),
             currentPage: 1
         };
 
@@ -190,10 +190,10 @@ export class Table extends React.Component<ITableProps, IState> {
             } else {
                 this.setState({ [key]: value });
             }
-            const newInputs = { ...this.state.inputs };
-            newInputs[key] = value;
+            const nnordicenergyInputs = { ...this.state.inputs };
+            nnordicenergyInputs[key] = value;
 
-            this.setState({ inputs: newInputs }, this.saveTotalEnergy);
+            this.setState({ inputs: nnordicenergyInputs }, this.saveTotalEnergy);
         }).bind(this);
     }
 
@@ -203,22 +203,22 @@ export class Table extends React.Component<ITableProps, IState> {
             this.setState(state);
 
             if (index !== undefined) {
-                const newInputs = { ...this.state.inputs };
-                newInputs.enabledProperties[index] = !newInputs.enabledProperties[index];
+                const nnordicenergyInputs = { ...this.state.inputs };
+                nnordicenergyInputs.enabledProperties[index] = !nnordicenergyInputs.enabledProperties[index];
 
-                this.setState({ inputs: newInputs });
+                this.setState({ inputs: nnordicenergyInputs });
             }
         }).bind(this);
     }
 
     handleInput = key => {
         return (e => {
-            const newInputs = { ...this.state.inputs };
-            newInputs[key] = e.target.value;
+            const nnordicenergyInputs = { ...this.state.inputs };
+            nnordicenergyInputs[key] = e.target.value;
 
             this.setState(
                 {
-                    inputs: newInputs
+                    inputs: nnordicenergyInputs
                 },
                 this.saveTotalEnergy
             );
@@ -230,12 +230,12 @@ export class Table extends React.Component<ITableProps, IState> {
             const dateObject = momentObject.toDate();
             const output = momentObject.format('DD MMM YY');
             this.setState({ [key]: dateObject, ['date_' + key]: output });
-            const newInputs = { ...this.state.inputs };
-            newInputs[key] = momentObject.unix();
+            const nnordicenergyInputs = { ...this.state.inputs };
+            nnordicenergyInputs[key] = momentObject.unix();
 
             this.setState(
                 {
-                    inputs: newInputs
+                    inputs: nnordicenergyInputs
                 },
                 this.saveTotalEnergy
             );
@@ -358,7 +358,7 @@ export class Table extends React.Component<ITableProps, IState> {
                             {data.map((row, rowIndex) => {
                                 return (
                                     <tr key={row[0]}>
-                                        {this.props.onSelect && 
+                                        {this.props.onSelect &&
                                             <td className="selectRow">
                                                 <div className="custom-control custom-checkbox">
                                                     <input
@@ -412,7 +412,7 @@ export class Table extends React.Component<ITableProps, IState> {
                         loadPage={this.loadPage}
                         pageSize={this.props.pageSize}
                         total={this.props.total}
-                    />        
+                    />
                     </>
                 )}
                 {type === 'admin' && (
@@ -539,7 +539,7 @@ export class Table extends React.Component<ITableProps, IState> {
                                                         type="number"
                                                     />
                                                 )}
-                                                {item.input.type === 'date' && (                                                
+                                                {item.input.type === 'date' && (
                                                     <DatePicker
                                                         onChange={handleDate(item.key)}
                                                         value={state[item.key] || null}

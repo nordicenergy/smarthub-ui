@@ -17,10 +17,10 @@
 import * as React from 'react';
 import { Nav } from 'react-bootstrap';
 
-import { ProducingAsset, ConsumingAsset } from 'ew-asset-registry-lib';
-import { User } from 'ew-user-registry-lib';
-import { Demand } from 'ew-market-lib';
-import { Configuration } from 'ew-utils-general-lib';
+import { ProducingAsset, ConsumingAsset } from 'nordicenergy-asset-registry-lib';
+import { User } from 'nordicenergy-user-registry-lib';
+import { Demand } from 'nordicenergy-market-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
 
 import { PageContent } from '../elements/PageContent/PageContent';
 import { DemandTable } from './DemandTable';

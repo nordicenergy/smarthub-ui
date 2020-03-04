@@ -56,7 +56,7 @@ export class IndividualFilter extends Component<IProps> {
                 return <FormControl fullWidth={true} variant="filled">
                     <InputLabel>{filter.label}</InputLabel>
                     <Select
-                        value={filter.selectedValue ? filter.selectedValue : ''} 
+                        value={filter.selectedValue ? filter.selectedValue : ''}
                         onChange={(e) => this.props.changeFilterValue(filter, e.target.value)}
                         fullWidth={true}
                         variant="filled"
@@ -81,7 +81,7 @@ export class IndividualFilter extends Component<IProps> {
             case CustomFilterInputType.yearMonth:
                 return <DatePicker
                     openTo="year"
-                    views={["year", "month"]}
+                    vinordicenergys={["year", "month"]}
                     label={filter.label}
                     value={filter.selectedValue}
                     onChange={(date: Moment) => this.props.changeFilterValue(filter, date)}

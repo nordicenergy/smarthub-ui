@@ -16,13 +16,13 @@
 
 import * as React from 'react';
 
-import { Certificate, CertificateLogic } from 'ew-origin-lib';
-import { User, Role } from 'ew-user-registry-lib';
+import { Certificate, CertificateLogic } from 'nordicenergy-origin-lib';
+import { User, Role } from 'nordicenergy-user-registry-lib';
 import { Redirect } from 'react-router-dom';
 import { ITableHeaderData } from './Table/Table';
 import TableUtils from './Table/TableUtils';
-import { Configuration } from 'ew-utils-general-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
 import { showNotification, NotificationType } from '../utils/notifications';
 import { RequestIRECsModal } from '../elements/Modal/RequestIRECsModal';
 import { PaginatedLoaderFiltered, IPaginatedLoaderFilteredState, getInitialPaginatedLoaderFilteredState, FILTER_SPECIAL_TYPES, RECORD_INDICATOR } from './Table/PaginatedLoaderFiltered';
@@ -45,7 +45,7 @@ export interface IEnrichedProducingAssetData {
 }
 
 interface IProducingAssetTableState extends IPaginatedLoaderFilteredState {
-    detailViewForAssetId: number;
+    detailVinordicenergyForAssetId: number;
     requestIRECsModalAsset: ProducingAsset.Entity;
     showRequestIRECsModal: boolean;
 }
@@ -55,13 +55,13 @@ enum OPERATIONS {
     SHOW_DETAILS = 'Show Details'
 }
 
-export class ProducingAssetTable extends PaginatedLoaderFiltered<ProducingAssetTableProps, IProducingAssetTableState> {    
+export class ProducingAssetTable extends PaginatedLoaderFiltered<ProducingAssetTableProps, IProducingAssetTableState> {
     constructor(props: ProducingAssetTableProps) {
         super(props);
 
         this.state = {
             ...getInitialPaginatedLoaderFilteredState(),
-            detailViewForAssetId: null,
+            detailVinordicenergyForAssetId: null,
             requestIRECsModalAsset: null,
             showRequestIRECsModal: false,
         };
@@ -70,8 +70,8 @@ export class ProducingAssetTable extends PaginatedLoaderFiltered<ProducingAssetT
         this.hideRequestIRECsModal = this.hideRequestIRECsModal.bind(this);
     }
 
-    async componentDidUpdate(newProps: ProducingAssetTableProps) {
-        if (newProps.producingAssets !== this.props.producingAssets) {
+    async componentDidUpdate(nnordicenergyProps: ProducingAssetTableProps) {
+        if (nnordicenergyProps.producingAssets !== this.props.producingAssets) {
             await this.loadPage(1);
         }
     }
@@ -85,7 +85,7 @@ export class ProducingAssetTable extends PaginatedLoaderFiltered<ProducingAssetT
                         certificate.owner === asset.owner.address &&
                         certificate.assetId.toString() === asset.id
                 ),
-                organizationName: (await new User(
+                organizationName: (await nnordicenergy User(
                     asset.owner.address,
                     this.props.conf as any
                 ).sync()).organization
@@ -102,7 +102,7 @@ export class ProducingAssetTable extends PaginatedLoaderFiltered<ProducingAssetT
                 break;
             default:
                 this.setState({
-                    detailViewForAssetId: id
+                    detailVinordicenergyForAssetId: id
                 });
                 break;
         }
@@ -210,15 +210,15 @@ export class ProducingAssetTable extends PaginatedLoaderFiltered<ProducingAssetT
     }
 
     render(): JSX.Element {
-        if (this.state.detailViewForAssetId !== null) {
+        if (this.state.detailVinordicenergyForAssetId !== null) {
             return (
                 <Redirect
                     push={true}
                     to={
                         '/' +
                         this.props.baseUrl +
-                        '/assets/producing_detail_view/' +
-                        this.state.detailViewForAssetId
+                        '/assets/producing_detail_vinordicenergy/' +
+                        this.state.detailVinordicenergyForAssetId
                     }
                 />
             );

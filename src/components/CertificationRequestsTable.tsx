@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { Configuration } from 'ew-utils-general-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
 
 import { Table } from './Table/Table';
 import TableUtils from './Table/TableUtils';
-import { CertificateLogic } from 'ew-origin-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
-import { User, Role } from 'ew-user-registry-lib';
+import { CertificateLogic } from 'nordicenergy-origin-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
+import { User, Role } from 'nordicenergy-user-registry-lib';
 import { showNotification, NotificationType } from '../utils/notifications';
 import { PaginatedLoader, IPaginatedLoaderState, DEFAULT_PAGE_SIZE, IPaginatedLoaderFetchDataParameters, IPaginatedLoaderFetchDataReturnValues, getInitialPaginatedLoaderState } from './Table/PaginatedLoader';
 
@@ -45,7 +45,7 @@ export class CertificationRequestsTable extends PaginatedLoader<ICertificateTabl
             };
         }
 
-        const view = this.props.approvedOnly ? 'approved' : 'pending';
+        const vinordicenergy = this.props.approvedOnly ? 'approved' : 'pending';
 
         const isIssuer = this.props.currentUser.isRole(Role.Issuer);
 
@@ -61,8 +61,8 @@ export class CertificationRequestsTable extends PaginatedLoader<ICertificateTabl
             const asset = this.props.producingAssets.find(a => a.id === request.assetId);
 
             if (
-                (view === 'pending' && Number(request.status) !== 0) ||
-                (view === 'approved' && Number(request.status) !== 1) ||
+                (vinordicenergy === 'pending' && Number(request.status) !== 0) ||
+                (vinordicenergy === 'approved' && Number(request.status) !== 1) ||
                 (!isIssuer && this.props.currentUser.id.toLowerCase() !== asset.owner.address.toLowerCase())
             ) {
                 continue;

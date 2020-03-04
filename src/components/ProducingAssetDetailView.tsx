@@ -16,20 +16,20 @@
 
 import * as React from 'react';
 
-import marker from '../../assets/marker.svg';	
+import marker from '../../assets/marker.svg';
 import map from '../../assets/map.svg';
 import wind from '../../assets/icon_wind.svg';
 import hydro from '../../assets/icon_hydro.svg';
 import solar from '../../assets/icon_solar.svg';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { Certificate } from 'ew-origin-lib';
-import { User } from 'ew-user-registry-lib';
+import { Certificate } from 'nordicenergy-origin-lib';
+import { User } from 'nordicenergy-user-registry-lib';
 
-import './DetailView.scss';
+import './DetailVinordicenergy.scss';
 import { getOffChainText } from '../utils/Helper';
-import { Configuration } from 'ew-utils-general-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
 import { MapContainer } from './MapContainer';
 import { SmartMeterReadingsTable } from './SmartMeterReadingsTable';
 import { SmartMeterReadingsChart } from './SmartMeterReadingsChart';
@@ -37,7 +37,7 @@ import { CertificateTable, SelectedState } from './CertificateTable';
 import { connect } from 'react-redux';
 import { IStoreState } from '../types';
 
-export interface IDetailViewProps {
+export interface IDetailVinordicenergyProps {
     conf: Configuration.Entity;
     id: number;
     baseUrl: string;
@@ -49,17 +49,17 @@ export interface IDetailViewProps {
     showCertificates: boolean;
 }
 
-export interface IDetailViewState {
-    newId: number;
+export interface IDetailVinordicenergyState {
+    nnordicenergyId: number;
     owner: User;
     notSoldCertificates: number;
 }
 
-class ProducingAssetDetailViewClass extends React.Component<IDetailViewProps, IDetailViewState> {
-    constructor(props: IDetailViewProps) {
+class ProducingAssetDetailVinordicenergyClass extends React.Component<IDetailVinordicenergyProps, IDetailVinordicenergyState> {
+    constructor(props: IDetailVinordicenergyProps) {
         super(props);
         this.state = {
-            newId: null,
+            nnordicenergyId: null,
             owner: null,
             notSoldCertificates: 0
         };
@@ -67,18 +67,18 @@ class ProducingAssetDetailViewClass extends React.Component<IDetailViewProps, ID
     }
 
     onInputChange(e: any): void {
-        this.setState({ newId: e.target.value });
+        this.setState({ nnordicenergyId: e.target.value });
     }
 
     async componentDidMount(): Promise<void> {
         await this.getOwner(this.props);
     }
 
-    async componentWillReceiveProps(newProps: IDetailViewProps): Promise<void> {
-        await this.getOwner(newProps);
+    async componentWillReceiveProps(nnordicenergyProps: IDetailVinordicenergyProps): Promise<void> {
+        await this.getOwner(nnordicenergyProps);
     }
 
-    async getOwner(props: IDetailViewProps): Promise<void> {
+    async getOwner(props: IDetailVinordicenergyProps): Promise<void> {
         if (props.id !== null && props.id !== undefined) {
             const selectedAsset = props.producingAssets.find(
                 (p: ProducingAsset.Entity) => p.id === props.id.toString()
@@ -97,7 +97,7 @@ class ProducingAssetDetailViewClass extends React.Component<IDetailViewProps, ID
                     });
                 }
                 this.setState({
-                    owner: await new User(
+                    owner: await nnordicenergy User(
                         selectedAsset.owner.address,
                         props.conf as any
                     ).sync()
@@ -249,18 +249,18 @@ class ProducingAssetDetailViewClass extends React.Component<IDetailViewProps, ID
                                                 {col.image &&
                                                     (col.type !== 'map' ? (
                                                         <div className={`Image`}>
-                                                            <img src={col.image} />	
-                                                            {col.type === 'map' && (	
-                                                                <img	
-                                                                    src={marker as any}	
-                                                                    className="Marker"	
-                                                                />	
-                                                            )}	
-                                                        </div>	
-                                                    ) : (	
-                                                        <div className={`Image Map`}>	
-                                                            <MapContainer asset={selectedAsset} />	
-                                                        </div>	
+                                                            <img src={col.image} />
+                                                            {col.type === 'map' && (
+                                                                <img
+                                                                    src={marker as any}
+                                                                    className="Marker"
+                                                                />
+                                                            )}
+                                                        </div>
+                                                    ) : (
+                                                        <div className={`Image Map`}>
+                                                            <MapContainer asset={selectedAsset} />
+                                                        </div>
                                                     ))}
                                                 {col.description && (
                                                     <div className="Description">
@@ -279,7 +279,7 @@ class ProducingAssetDetailViewClass extends React.Component<IDetailViewProps, ID
         );
 
         return (
-            <div className="DetailViewWrapper">
+            <div className="DetailVinordicenergyWrapper">
                 {this.props.addSearchField && (
                     <div className="FindAsset">
                         <input
@@ -293,8 +293,8 @@ class ProducingAssetDetailViewClass extends React.Component<IDetailViewProps, ID
 
                         <Link
                             className="btn btn-primary find-asset-button"
-                            to={`/${this.props.baseUrl}/assets/producing_detail_view/${
-                                this.state.newId
+                            to={`/${this.props.baseUrl}/assets/producing_detail_vinordicenergy/${
+                                this.state.nnordicenergyId
                             }`}
                         >
                             Find Asset
@@ -302,7 +302,7 @@ class ProducingAssetDetailViewClass extends React.Component<IDetailViewProps, ID
                     </div>
                 )}
 
-                {selectedAsset && 
+                {selectedAsset &&
                     <>
                         <div className="PageContentWrapper">
                             {pageBody}
@@ -353,8 +353,8 @@ class ProducingAssetDetailViewClass extends React.Component<IDetailViewProps, ID
     }
 }
 
-export const ProducingAssetDetailView = connect(
+export const ProducingAssetDetailVinordicenergy = connect(
     (state: IStoreState) => ({
         currentUser: state.currentUser
     })
-)(ProducingAssetDetailViewClass);
+)(ProducingAssetDetailVinordicenergyClass);

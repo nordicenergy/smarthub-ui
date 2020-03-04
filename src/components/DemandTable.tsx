@@ -18,15 +18,15 @@ import * as React from 'react';
 import moment from 'moment';
 import { Redirect } from 'react-router-dom';
 
-import { Configuration, TimeFrame, Compliance, AssetType, Currency } from 'ew-utils-general-lib';
-import { ProducingAsset, ConsumingAsset } from 'ew-asset-registry-lib';
-import { User } from 'ew-user-registry-lib';
-import { Demand } from 'ew-market-lib';
+import { Configuration, TimeFrame, Compliance, AssetType, Currency } from 'nordicenergy-utils-general-lib';
+import { ProducingAsset, ConsumingAsset } from 'nordicenergy-asset-registry-lib';
+import { User } from 'nordicenergy-user-registry-lib';
+import { Demand } from 'nordicenergy-market-lib';
 
 import { Table } from './Table/Table';
 import TableUtils from './Table/TableUtils';
 import { showNotification, NotificationType } from '../utils/notifications';
-import { deleteDemand } from 'ew-market-lib/dist/js/src/blockchain-facade/Demand';
+import { deleteDemand } from 'nordicenergy-market-lib/dist/js/src/blockchain-facade/Demand';
 import { IPaginatedLoaderState, PaginatedLoader, DEFAULT_PAGE_SIZE, IPaginatedLoaderFetchDataParameters, IPaginatedLoaderFetchDataReturnValues, getInitialPaginatedLoaderState } from './Table/PaginatedLoader';
 
 export interface IDemandTableProps {
@@ -77,7 +77,7 @@ export class DemandTable extends PaginatedLoader<IDemandTableProps, IDemandTable
                 demand,
                 producingAsset: null,
                 consumingAsset: null,
-                demandOwner: await (new User(demand.demandOwner, this.props.conf)).sync()
+                demandOwner: await (nnordicenergy User(demand.demandOwner, this.props.conf)).sync()
             };
 
             if (demand.offChainProperties) {

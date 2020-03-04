@@ -14,11 +14,11 @@
 //
 // @authors: slock.it GmbH; Heiko Burkhardt, heiko.burkhardt@slock.it; Martin Kuechler, martin.kuchler@slock.it
 
-import { Certificate } from 'ew-origin-lib';
-import { Demand } from 'ew-market-lib';
-import { ProducingAsset, ConsumingAsset } from 'ew-asset-registry-lib';
-import { User } from 'ew-user-registry-lib';
-import { Configuration } from 'ew-utils-general-lib';
+import { Certificate } from 'nordicenergy-origin-lib';
+import { Demand } from 'nordicenergy-market-lib';
+import { ProducingAsset, ConsumingAsset } from 'nordicenergy-asset-registry-lib';
+import { User } from 'nordicenergy-user-registry-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
 
 export enum Actions {
     certificateCreatedOrUpdated = 'CERTIFICATE_CREATED_OR_UPDATED',

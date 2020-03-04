@@ -1,5 +1,5 @@
 import { call, put, delay, select, take, all, fork } from 'redux-saga/effects'
-import { Configuration } from 'ew-utils-general-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
 import { SagaIterator } from 'redux-saga';
 import { Actions } from '../actions';
 import { hideAccountChangedModal, showAccountChangedModal } from './actions';

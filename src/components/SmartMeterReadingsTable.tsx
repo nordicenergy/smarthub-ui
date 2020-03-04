@@ -1,8 +1,8 @@
 import * as React from 'react';
 import moment from 'moment';
 
-import { Configuration } from 'ew-utils-general-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
 
 import './SmartMeterReadingsTable.scss';
 import { Table } from './Table/Table';

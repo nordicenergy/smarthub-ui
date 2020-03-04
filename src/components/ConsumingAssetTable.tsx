@@ -15,14 +15,14 @@
 // @authors: slock.it GmbH; Heiko Burkhardt, heiko.burkhardt@slock.it; Martin Kuechler, martin.kuchler@slock.it
 
 import * as React from 'react';
-import { Certificate } from 'ew-origin-lib';
-import { User } from 'ew-user-registry-lib';
+import { Certificate } from 'nordicenergy-origin-lib';
+import { User } from 'nordicenergy-user-registry-lib';
 import { Redirect } from 'react-router-dom';
 import { ITableHeaderData } from './Table/Table';
 import TableUtils from './Table/TableUtils';
-import { Configuration } from 'ew-utils-general-lib';
-import { Demand } from 'ew-market-lib';
-import { ConsumingAsset } from 'ew-asset-registry-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
+import { Demand } from 'nordicenergy-market-lib';
+import { ConsumingAsset } from 'nordicenergy-asset-registry-lib';
 import { IPaginatedLoaderFetchDataParameters, IPaginatedLoaderFetchDataReturnValues } from './Table/PaginatedLoader';
 import { IPaginatedLoaderFilteredState, getInitialPaginatedLoaderFilteredState, FILTER_SPECIAL_TYPES, RECORD_INDICATOR, PaginatedLoaderFiltered } from './Table/PaginatedLoaderFiltered';
 import { ICustomFilterDefinition, CustomFilterInputType } from './Table/FiltersHeader';
@@ -38,7 +38,7 @@ interface ConsumingAssetTableProps {
 }
 
 interface IConsumingAssetTableState extends IPaginatedLoaderFilteredState {
-    detailViewForAssetId: number;
+    detailVinordicenergyForAssetId: number;
 }
 
 interface IEnrichedConsumingAssetData {
@@ -52,7 +52,7 @@ export class ConsumingAssetTable extends PaginatedLoaderFiltered<ConsumingAssetT
 
         this.state = {
             ...getInitialPaginatedLoaderFilteredState(),
-            detailViewForAssetId: null
+            detailVinordicenergyForAssetId: null
         };
 
         this.operationClicked = this.operationClicked.bind(this);
@@ -106,8 +106,8 @@ export class ConsumingAssetTable extends PaginatedLoaderFiltered<ConsumingAssetT
         };
     }
 
-    async componentDidUpdate(newProps: ConsumingAssetTableProps) {
-        if (newProps.consumingAssets !== this.props.consumingAssets) {
+    async componentDidUpdate(nnordicenergyProps: ConsumingAssetTableProps) {
+        if (nnordicenergyProps.consumingAssets !== this.props.consumingAssets) {
             await this.loadPage(1);
         }
     }
@@ -116,7 +116,7 @@ export class ConsumingAssetTable extends PaginatedLoaderFiltered<ConsumingAssetT
         const promises = consumingAssets.map(
             async (asset: ConsumingAsset.Entity) => ({
                 asset,
-                organizationName: (await new User(
+                organizationName: (await nnordicenergy User(
                     asset.owner.address,
                     this.props.conf as any
                 ).sync()).organization
@@ -128,20 +128,20 @@ export class ConsumingAssetTable extends PaginatedLoaderFiltered<ConsumingAssetT
 
     operationClicked(id: number): void {
         this.setState({
-            detailViewForAssetId: id
+            detailVinordicenergyForAssetId: id
         });
     }
 
     render(): JSX.Element {
-        if (this.state.detailViewForAssetId !== null) {
+        if (this.state.detailVinordicenergyForAssetId !== null) {
             return (
                 <Redirect
                     push={true}
                     to={
                         '/' +
                         this.props.baseUrl +
-                        '/assets/consuming_detail_view/' +
-                        this.state.detailViewForAssetId
+                        '/assets/consuming_detail_vinordicenergy/' +
+                        this.state.detailVinordicenergyForAssetId
                     }
                 />
             );

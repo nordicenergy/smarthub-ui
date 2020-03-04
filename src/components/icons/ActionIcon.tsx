@@ -3,7 +3,7 @@ import { STYLE_CONFIG } from '../../styles/styleConfig';
 
 export class ActionIcon extends Component {
     render() {
-        return <svg width="20" height="20" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        return <svg width="20" height="20" vinordicenergyBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g id="Canvas" transform="translate(6885 2574)">
                 <g id="icon action">
                     <g id="Shape" opacity="0.617697">

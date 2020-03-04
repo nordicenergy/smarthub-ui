@@ -17,19 +17,19 @@
 import * as React from 'react';
 
 import moment from 'moment';
-import marker from '../../assets/marker.svg';	
+import marker from '../../assets/marker.svg';
 import map from '../../assets/map.svg';
 import { Link } from 'react-router-dom';
-import { Certificate } from 'ew-origin-lib';
-import { User } from 'ew-user-registry-lib';
-import { ConsumingAsset } from 'ew-asset-registry-lib';
+import { Certificate } from 'nordicenergy-origin-lib';
+import { User } from 'nordicenergy-user-registry-lib';
+import { ConsumingAsset } from 'nordicenergy-asset-registry-lib';
 
-import './DetailView.scss';
+import './DetailVinordicenergy.scss';
 import { getOffChainText } from '../utils/Helper';
-import { Configuration } from 'ew-utils-general-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
 import { MapContainer } from './MapContainer';
 
-export interface IDetailViewProps {
+export interface IDetailVinordicenergyProps {
     conf: Configuration.Entity;
     id: number;
     baseUrl: string;
@@ -37,19 +37,19 @@ export interface IDetailViewProps {
     consumingAssets: ConsumingAsset.Entity[];
 }
 
-export interface IDetailViewState {
-    newId: number;
+export interface IDetailVinordicenergyState {
+    nnordicenergyId: number;
     owner: User;
     notSoldCertificates: number;
 }
 
 const TableWidth: number[] = [210, 210, 210, 210, 407];
 
-export class ConsumingAssetDetailView extends React.Component<IDetailViewProps, IDetailViewState> {
-    constructor(props: IDetailViewProps) {
+export class ConsumingAssetDetailVinordicenergy extends React.Component<IDetailVinordicenergyProps, IDetailVinordicenergyState> {
+    constructor(props: IDetailVinordicenergyProps) {
         super(props);
         this.state = {
-            newId: null,
+            nnordicenergyId: null,
             owner: null,
             notSoldCertificates: 0
         };
@@ -57,18 +57,18 @@ export class ConsumingAssetDetailView extends React.Component<IDetailViewProps, 
     }
 
     onInputChange(e: any): void {
-        this.setState({ newId: e.target.value });
+        this.setState({ nnordicenergyId: e.target.value });
     }
 
     async componentDidMount(): Promise<void> {
         await this.getOwner(this.props);
     }
 
-    async componentWillReceiveProps(newProps: IDetailViewProps): Promise<void> {
-        await this.getOwner(newProps);
+    async componentWillReceiveProps(nnordicenergyProps: IDetailVinordicenergyProps): Promise<void> {
+        await this.getOwner(nnordicenergyProps);
     }
 
-    async getOwner(props: IDetailViewProps): Promise<void> {
+    async getOwner(props: IDetailVinordicenergyProps): Promise<void> {
         const selectedAsset: ConsumingAsset.Entity = props.consumingAssets.find(
             (c: ConsumingAsset.Entity) => c.id === props.id.toString()
         );
@@ -86,7 +86,7 @@ export class ConsumingAssetDetailView extends React.Component<IDetailViewProps, 
                 });
             }
             this.setState({
-                owner: await new User(selectedAsset.owner.address, props.conf as any).sync()
+                owner: await nnordicenergy User(selectedAsset.owner.address, props.conf as any).sync()
             });
         }
     }
@@ -112,18 +112,18 @@ export class ConsumingAssetDetailView extends React.Component<IDetailViewProps, 
                         data: this.state.owner ? this.state.owner.organization : ''
                     },
 
-                    {	
-                        label:	
-                            'Geo Location' +	
-                            getOffChainText('gpsLatitude', selectedAsset.offChainProperties),	
-                        data:	
-                            selectedAsset.offChainProperties.gpsLatitude +	
-                            ', ' +	
-                            selectedAsset.offChainProperties.gpsLongitude,	
-                        image: map,	
-                        type: 'map',	
-                        rowspan: 3,	
-                        colspan: 2	
+                    {
+                        label:
+                            'Geo Location' +
+                            getOffChainText('gpsLatitude', selectedAsset.offChainProperties),
+                        data:
+                            selectedAsset.offChainProperties.gpsLatitude +
+                            ', ' +
+                            selectedAsset.offChainProperties.gpsLongitude,
+                        image: map,
+                        type: 'map',
+                        rowspan: 3,
+                        colspan: 2
                     },
 
                     {
@@ -155,7 +155,7 @@ export class ConsumingAssetDetailView extends React.Component<IDetailViewProps, 
         }
 
         return (
-            <div className="DetailViewWrapper">
+            <div className="DetailVinordicenergyWrapper">
                 <div className="FindAsset">
                     <input
                         onChange={this.onInputChange}
@@ -166,8 +166,8 @@ export class ConsumingAssetDetailView extends React.Component<IDetailViewProps, 
 
                     <Link
                         className="btn btn-primary find-asset-button"
-                        to={`/${this.props.baseUrl}/assets/consuming_detail_view/${
-                            this.state.newId
+                        to={`/${this.props.baseUrl}/assets/consuming_detail_vinordicenergy/${
+                            this.state.nnordicenergyId
                         }`}
                     >
                         Find Asset
@@ -198,18 +198,18 @@ export class ConsumingAssetDetailView extends React.Component<IDetailViewProps, 
                                                     {col.image &&
                                                     (col.type !== 'map' ? (
                                                         <div className={`Image`}>
-                                                            <img src={col.image} />	
-                                                            {col.type === 'map' && (	
-                                                                <img	
-                                                                    src={marker as any}	
-                                                                    className="Marker"	
-                                                                />	
-                                                            )}	
-                                                        </div>	
-                                                    ) : (	
-                                                        <div className={`Image Map`}>	
-                                                            <MapContainer asset={selectedAsset} />	
-                                                        </div>	
+                                                            <img src={col.image} />
+                                                            {col.type === 'map' && (
+                                                                <img
+                                                                    src={marker as any}
+                                                                    className="Marker"
+                                                                />
+                                                            )}
+                                                        </div>
+                                                    ) : (
+                                                        <div className={`Image Map`}>
+                                                            <MapContainer asset={selectedAsset} />
+                                                        </div>
                                                     ))}
                                                     {col.description && (
                                                         <div className="Description">

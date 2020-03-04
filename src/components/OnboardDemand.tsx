@@ -16,10 +16,10 @@
 
 import * as React from 'react';
 import { Table, ITableAdminHeaderData } from './Table/Table';
-import { User } from 'ew-user-registry-lib';
-import { AssetType, TimeFrame, Compliance, Currency, Configuration } from 'ew-utils-general-lib';
-import { ProducingAsset } from 'ew-asset-registry-lib';
-import { Demand } from 'ew-market-lib';
+import { User } from 'nordicenergy-user-registry-lib';
+import { AssetType, TimeFrame, Compliance, Currency, Configuration } from 'nordicenergy-utils-general-lib';
+import { ProducingAsset } from 'nordicenergy-asset-registry-lib';
+import { Demand } from 'nordicenergy-market-lib';
 import { showNotification, NotificationType } from '../utils/notifications';
 
 export interface IOnboardDemandProps {

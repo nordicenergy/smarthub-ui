@@ -14,11 +14,11 @@
 //
 // @authors: slock.it GmbH; Heiko Burkhardt, heiko.burkhardt@slock.it; Martin Kuechler, martin.kuchler@slock.it
 
-import { ProducingAsset, ConsumingAsset } from 'ew-asset-registry-lib';
-import { User } from 'ew-user-registry-lib';
-import { Certificate } from 'ew-origin-lib';
-import { Configuration } from 'ew-utils-general-lib';
-import { Demand } from 'ew-market-lib';
+import { ProducingAsset, ConsumingAsset } from 'nordicenergy-asset-registry-lib';
+import { User } from 'nordicenergy-user-registry-lib';
+import { Certificate } from 'nordicenergy-origin-lib';
+import { Configuration } from 'nordicenergy-utils-general-lib';
+import { Demand } from 'nordicenergy-market-lib';
 import { IGeneralState } from '../features/general/reducer';
 
 export interface IStoreState {
