@@ -12,7 +12,7 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details, at <http://www.gnu.org/licenses/>.
 //
-// @authors: slock.it GmbH; Heiko Burkhardt, heiko.burkhardt@slock.it; Martin Kuechler, martin.kuchler@slock.it
+// @authors: Nordic Energy
 
 // import Web3Type from '../types/web3'
 // import { CoOTruffleBuild, AssetProducingLogicTruffleBuild, DemandLogicTruffleBuild, CertificateLogicTruffleBuild, AssetConsumingLogicTruffleBuild, UserLogicTruffleBuild, BlockchainProperties } from 'nordicenergyf-coo'
